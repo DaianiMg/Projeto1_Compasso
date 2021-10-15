@@ -42,6 +42,7 @@ namespace Projeto1.Controllers
             //if (url.IsSuccessStatusCode)
             //{
 
+
             if (!string.IsNullOrEmpty(teste.logradouro))
             {
                 cliente.Logradouro = teste.logradouro;
