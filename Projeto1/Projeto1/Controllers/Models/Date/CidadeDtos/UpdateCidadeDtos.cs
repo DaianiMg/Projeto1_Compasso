@@ -8,12 +8,12 @@ namespace Projeto1.Controllers.Models.Date.CidadeDtos
 {
     public class UpdateCidadeDtos
     {
-
-        [Required(ErrorMessage = "Esse Id já existe, tenta outro")]
+        //EDITAR CIDADE
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
         public string Nome { get; set; }
+
         [Required(ErrorMessage = "O campo Estado É obrigatório")]
         //[Required(ErrorMessage = "O campo Estado é obrigatório")]
         public string Estado { get; set; }

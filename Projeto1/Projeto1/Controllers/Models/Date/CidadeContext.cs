@@ -19,6 +19,7 @@ namespace Projeto1.Controllers.Models.Date
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Initial Catalog = Projeto1; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
         
+        //COLOQUEI OS CONFIGURATION AQUI, CIDADE E CLIENTE
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cidade>(entity =>

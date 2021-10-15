@@ -9,7 +9,7 @@ namespace Projeto1.Controllers.Models.Date.ClienteDtos
 {
     public class CepResponse
     {
-
+        //DO VIACEP
 
         //[JsonProperty("cep")]
         public string cep { get; set; }
@@ -18,7 +18,7 @@ namespace Projeto1.Controllers.Models.Date.ClienteDtos
         public string logradouro { get; set; }
 
         //[JsonProperty("complemento")]
-        //public string complemento { get; set; }
+        public string complemento { get; set; }
 
         //[JsonProperty("bairro")]
         public string bairro { get; set; }

@@ -30,7 +30,7 @@ namespace Projeto1.Controllers
         }
         
         [HttpPost]
-        public async Task< IActionResult>  AdicionaCliente([FromBody] CreateClienteDtos clienteDto)
+        public async Task< IActionResult>  AdicionaCliente([FromBody] CreateClienteDtos clienteDto) //esse dtos é para criação
         {
             Cliente cliente = _mapper.Map<Cliente>(clienteDto);
             var httpClient = new HttpClient();
@@ -38,6 +38,7 @@ namespace Projeto1.Controllers
 
             var teste = JsonConvert.DeserializeObject<CepResponse>(url);
 
+            //EnsureSuccessStatusCode();
             //if (url.IsSuccessStatusCode)
             //{
 
@@ -50,9 +51,10 @@ namespace Projeto1.Controllers
                 cliente.Bairro = teste.bairro;
             }
 
+
             Cidade cidade = _context.Cidade.FirstOrDefault(cidade => cidade.Nome == teste.localidade && cidade.Estado == teste.uf);
-            
-         
+
+           
 
             if (cidade != null)
             {
@@ -61,29 +63,26 @@ namespace Projeto1.Controllers
                 _context.SaveChanges();
                 return CreatedAtAction(nameof(RecuperaClientePorId), new { Id = cliente.Id }, cliente);
 
-
             }
 
             return NotFound();
 
-            //Cliente cliente = _mapper.Map<Cliente>(clienteDto);
         }
 
         [HttpGet]
-        public IActionResult RecuperaCliente()
+        public IActionResult RecuperaCliente() 
         {
             var clienteDto = _mapper.Map<List<Cliente>, List<ReadClienteDtos>>(_context.Cliente.ToList());
             return Ok(clienteDto);
         }
         
 
-        [HttpGet("{Id}")]
+        [HttpGet("{Id}")] 
         public IActionResult RecuperaClientePorId(int id)
         {
             Cliente cliente = _context.Cliente.FirstOrDefault(cliente => cliente.Id == id);
             if (cliente != null)
             {
-                //cliente.Cidade = _context.Cidade.FirstOrDefault(c => c.Id == cliente.CidadeId);
                 ReadClienteDtos clienteDto = _mapper.Map<ReadClienteDtos>(cliente);
 
                 return Ok(clienteDto);
